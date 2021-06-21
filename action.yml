@@ -19,6 +19,9 @@ inputs:
   context-github:
     description: 'Github context'
     required: true
+  name:
+    description: 'Artifact file name'
+    required: true
   artifacts:
     description: 'List of artifacts to register'
     required: true
