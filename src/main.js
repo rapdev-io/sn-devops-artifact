@@ -43,7 +43,7 @@ const axios = require('axios');
         await axios.post(sncArtifactURL, artifactBody, artifactConfig);
     }
     catch (e) {
-        core.setFailed(`failed POSTing artifact registration: ${e}`)
+        core.setFailed(`failed POSTing artifact registration: ${e}\n artifactBody is ${artifactBody}`)
     }
 
 })();
