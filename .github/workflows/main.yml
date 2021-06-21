@@ -38,7 +38,7 @@ jobs:
           devops-integration-user-pass: ${{ secrets.DEVOPS_INTEGRATION_USER_PASS }}
           tool-id: ${{ secrets.TOOL_ID }}
           context-github: ${{ toJSON(github) }}
-          artifacts: '[{"name": "snc-devops-demo", "version": "x", "semanticversion": "x", "repositoryname": "x"}]'
+          artifacts: '[{"name": "snc-devops-demo", "version": "x", "semanticVersion": "x", "repositoryName": "x"}]'
           name: 'snc-devops-demo'
       - name: notify finish
         uses: rapdev-io/sn-devops-notification@v0.0.3
