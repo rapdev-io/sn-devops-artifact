@@ -32,7 +32,6 @@ const axios = require('axios');
     try {
         artifactBody = {
             'artifacts': artifacts,
-            'name': name,
             'pipelineName': `${githubContext.workflow}`,
             'stageName': `${githubContext.job}`,
             'taskExecutionNumber': `${githubContext.run_number}`
