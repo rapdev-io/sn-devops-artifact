@@ -3128,16 +3128,16 @@ const axios = __nccwpck_require__(126);
             artifacts = JSON.parse(core.getInput('artifacts'), { required: true });
         } catch (e) {
             core.setFailed(`failed to parse artifacts JSON: ${e}`);
+            return;
         }
     }
 
-    let githubContext;
-    if (!!core.getInput('github-context'), { required: true }) {
-        try {
-            githubContext = JSON.parse(core.getInput('github-context'), { required: true });
-        } catch (e) {
-            core.setFailed(`failed to parse github context JSON: ${e}`);
-        }
+    let githubContext = core.getInput('context-github', { required: true })
+
+    try {
+        githubContext = JSON.parse(githubContext);
+    } catch (e) {
+        core.setFailed(`exception parsing github context ${e}`);
     }
     const sncArtifactURL = `https://${username}:${pass}@${instanceName}.service-now.com/api/sn_devops/devops/artifact/registration?orchestrationToolId=${toolId}`
 

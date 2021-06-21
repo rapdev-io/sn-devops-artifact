@@ -6,6 +6,7 @@ const axios = require('axios');
     const toolId = core.getInput('tool-id', { required: true });
     const username = core.getInput('devops-integration-user-name', { required: true });
     const pass = core.getInput('devops-integration-user-pass', { required: true });
+    const name = core.getInput('name', { required: true });
     const defaultHeaders = { 'Content-Type': 'application/json' };
 
 
@@ -15,16 +16,16 @@ const axios = require('axios');
             artifacts = JSON.parse(core.getInput('artifacts'), { required: true });
         } catch (e) {
             core.setFailed(`failed to parse artifacts JSON: ${e}`);
+            return;
         }
     }
 
-    let githubContext;
-    if (!!core.getInput('github-context'), { required: true }) {
-        try {
-            githubContext = JSON.parse(core.getInput('github-context'), { required: true });
-        } catch (e) {
-            core.setFailed(`failed to parse github context JSON: ${e}`);
-        }
+    let githubContext = core.getInput('context-github', { required: true })
+
+    try {
+        githubContext = JSON.parse(githubContext);
+    } catch (e) {
+        core.setFailed(`exception parsing github context ${e}`);
     }
     const sncArtifactURL = `https://${username}:${pass}@${instanceName}.service-now.com/api/sn_devops/devops/artifact/registration?orchestrationToolId=${toolId}`
 
