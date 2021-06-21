@@ -28,9 +28,9 @@ const axios = require('axios');
         core.setFailed(`exception parsing github context ${e}`);
     }
     const sncArtifactURL = `https://${username}:${pass}@${instanceName}.service-now.com/api/sn_devops/devops/artifact/registration?orchestrationToolId=${toolId}`
-
+    let artifactBody;
     try {
-        let artifactBody = {
+        artifactBody = {
             'artifacts': artifacts,
             'name': name,
             'pipelineName': `${githubContext.workflow}`,
