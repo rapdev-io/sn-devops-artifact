@@ -3146,7 +3146,8 @@ const axios = __nccwpck_require__(126);
             'artifacts': artifacts,
             'pipelineName': `${githubContext.workflow}`,
             'stageName': `${githubContext.job}`,
-            'taskExecutionNumber': `${githubContext.run_number}`
+            'taskExecutionNumber': `${githubContext.run_number}`,
+            'branchName': `${githubContext.run_number}`
         };
 
         core.debug("Artifact Body " + JSON.stringify(artifactBody));
