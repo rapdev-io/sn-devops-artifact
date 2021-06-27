@@ -37,6 +37,8 @@ const axios = require('axios');
             'taskExecutionNumber': `${githubContext.run_number}`
         };
 
+        core.debug("Artifact Body " + JSON.stringify(artifactBody));
+
         let artifactConfig = { headers: defaultHeaders };
 
         await axios.post(sncArtifactURL, artifactBody, artifactConfig);
