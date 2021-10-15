@@ -25,6 +25,9 @@ inputs:
   artifacts:
     description: 'List of artifacts to register'
     required: true
+branding:
+  icon: 'arrow-right-circle'
+  color: 'blue'
 runs: 
   using: 'node12'
   main: 'dist/index.js'
