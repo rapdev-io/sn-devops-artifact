@@ -1,4 +1,4 @@
-name: 'ServiceNow DevOps Artifact'
+name: 'ServiceNow DevOps Artifact Registration'
 description: 'Register Job Artifacts in ServiceNow Devops'
 inputs:
   devops-integration-user-name:
@@ -25,6 +25,9 @@ inputs:
   artifacts:
     description: 'List of artifacts to register'
     required: true
+branding:
+  icon: 'arrow-right-circle'
+  color: 'blue'
 runs: 
   using: 'node12'
   main: 'dist/index.js'
