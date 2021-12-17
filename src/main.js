@@ -20,25 +20,23 @@ const axios = require('axios');
         }
     }
 
-    let githubContext = core.getInput('context-github', { required: true })
+    let githubContext = core.getInput('context-github', { required: true });
 
     try {
         githubContext = JSON.parse(githubContext);
     } catch (e) {
         core.setFailed(`exception parsing github context ${e}`);
     }
-    const sncArtifactURL = `https://${username}:${pass}@${instanceName}.service-now.com/api/sn_devops/devops/artifact/registration?orchestrationToolId=${toolId}`
+    const sncArtifactURL = `https://${username}:${pass}@${instanceName}.service-now.com/api/sn_devops/devops/artifact/registration?toolId=${toolId}&orchestrationToolId=${toolId}`;
     let artifactBody;
     try {
         artifactBody = {
             'artifacts': artifacts,
-            'pipelineName': `${githubContext.workflow}`,
+            'pipelineName': `${githubContext.repository}/${githubContext.workflow}`,
             'stageName': `${githubContext.job}`,
-            'taskExecutionNumber': `${githubContext.run_number}`,
-            'branchName': `${githubContext.run_number}`
+            'taskExecutionNumber': `${githubContext.run_number}`
         };
 
-        core.debug("Artifact Body " + JSON.stringify(artifactBody));
 
         let artifactConfig = { headers: defaultHeaders };
 
