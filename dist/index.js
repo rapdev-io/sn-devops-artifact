@@ -3602,7 +3602,6 @@ const axios = __nccwpck_require__(56);
     const toolId = core.getInput('tool-id', { required: true });
     const username = core.getInput('devops-integration-user-name', { required: true });
     const pass = core.getInput('devops-integration-user-pass', { required: true });
-    const name = core.getInput('name', { required: true });
     const defaultHeaders = { 'Content-Type': 'application/json' };
 
 
