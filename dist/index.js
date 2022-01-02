@@ -3624,6 +3624,7 @@ const axios = __nccwpck_require__(56);
     }
     const sncArtifactURL = `https://${username}:${pass}@${instanceName}.service-now.com/api/sn_devops/devops/artifact/registration?toolId=${toolId}&orchestrationToolId=${toolId}`;
     let artifactBody;
+    let resposne;
     try {
         artifactBody = {
             'artifacts': artifacts,
@@ -3632,10 +3633,11 @@ const axios = __nccwpck_require__(56);
             'taskExecutionNumber': `${githubContext.run_number}`
         };
 
+        console.log("artifact body: " + JSON.stringify(artifactBody));
 
         let artifactConfig = { headers: defaultHeaders };
-
-        await axios.post(sncArtifactURL, artifactBody, artifactConfig);
+        response = await axios.post(sncArtifactURL, artifactBody, artifactConfig);
+        console.log("ServiceNow Status: " + response.status + "; Response: " + JSON.stringify(response.data));
     }
     catch (e) {
         artifactBody = JSON.stringify(artifactBody);
