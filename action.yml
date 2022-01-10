@@ -10,17 +10,11 @@ inputs:
   instance-name: 
     description: 'ServiceNow Instance Name (e.g.: rapdevio)'
     required: true
-  state:
-    description: 'Orchestration Task State'
-    required: true
   tool-id:
     description: 'Orchestration tool id'
     required: true
   context-github:
     description: 'Github context'
-    required: true
-  name:
-    description: 'Artifact file name'
     required: true
   artifacts:
     description: 'List of artifacts to register'
