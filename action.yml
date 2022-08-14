@@ -16,6 +16,9 @@ inputs:
   context-github:
     description: 'Github context'
     required: true
+  stage-name:
+    description: 'Job name'
+    required: false
   artifacts:
     description: 'List of artifacts to register'
     required: true
