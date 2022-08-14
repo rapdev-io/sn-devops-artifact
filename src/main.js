@@ -28,7 +28,8 @@ const axios = require('axios');
     }
     const sncArtifactURL = `https://${username}:${pass}@${instanceName}.service-now.com/api/sn_devops/devops/artifact/registration?toolId=${toolId}&orchestrationToolId=${toolId}`;
     let artifactBody;
-    let resposne;
+    let response;
+    let stageName = core.getInput('stage-name', { required: false });
     try {
         artifactBody = {
             'artifacts': artifacts,
@@ -36,6 +37,10 @@ const axios = require('axios');
             'stageName': `${githubContext.job}`,
             'taskExecutionNumber': `${githubContext.run_number}`
         };
+
+        if(stageName) {
+            artifactBody.stageName = stageName;
+        }
 
         console.log("artifact body: " + JSON.stringify(artifactBody));
 
